@@ -1,0 +1,9 @@
+c:\users\kopa\documents\visual studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe.config
+c:\users\kopa\documents\visual studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csprojResolveAssemblyReference.cache
+c:\users\kopa\documents\visual studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Properties.Resources.resources
+c:\users\kopa\documents\visual studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache
+C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe
+C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.pdb
+C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
+C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
+C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Form1.resources
