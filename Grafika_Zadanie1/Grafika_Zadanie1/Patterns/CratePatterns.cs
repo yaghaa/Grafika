@@ -140,7 +140,7 @@ namespace Grafika_Zadanie1.Patterns
       return image;
     }
 
-    public Image ChessBoardRotate(Color firstColor, Color secondColor, int sideSize, int resolution)
+    public Image ChessBoardRotate(Color firstColor, Color secondColor, int sideSize, int resolution, Bitmap bitmap)
     {
       Bitmap image;
       bool useFirstColor = true;
@@ -178,7 +178,7 @@ namespace Grafika_Zadanie1.Patterns
               image.SetPixel(j, i, firstColor);
             }
             else
-              image.SetPixel(j, i, secondColor);
+              image.SetPixel(j, i, bitmap !=null ? bitmap.GetPixel(j,i):secondColor);
           }
           else if ((j > x_c && i < y_c))
           {
@@ -191,7 +191,7 @@ namespace Grafika_Zadanie1.Patterns
               image.SetPixel(j, i, firstColor);
             }
             else
-              image.SetPixel(j, i, secondColor);
+              image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : secondColor);
           }
           else if ((j > x_c && i > y_c))
           {
@@ -204,7 +204,7 @@ namespace Grafika_Zadanie1.Patterns
               image.SetPixel(j, i, firstColor);
             }
             else
-              image.SetPixel(j, i, secondColor);
+              image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : secondColor);
           }
           else if ((j < x_c && i > y_c))
           {
@@ -217,7 +217,11 @@ namespace Grafika_Zadanie1.Patterns
               image.SetPixel(j, i, firstColor);
             }
             else
-              image.SetPixel(j, i, secondColor);
+              image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : secondColor);
+          }
+          else
+          {
+                        image.SetPixel(j, i, firstColor);
           }
         }
         xCount = 1;

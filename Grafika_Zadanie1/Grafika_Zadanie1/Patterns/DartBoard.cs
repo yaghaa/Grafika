@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
   public class DartBoard
   {
-    public Image DartBoardWithBlur(int circleBlurSize = 10, int blurSize = 50)
+    public Image DartBoardWithBlur(int circleBlurSize, int blurSize, Bitmap bitmap)
     {
       Bitmap image;
 
@@ -81,7 +81,7 @@ namespace Grafika_Zadanie1.Patterns
           }
           else
           {
-            image.SetPixel(j, i, Color.White);
+            image.SetPixel(j, i, bitmap!=null?bitmap.GetPixel(j,i):Color.White);
           }
         }
 

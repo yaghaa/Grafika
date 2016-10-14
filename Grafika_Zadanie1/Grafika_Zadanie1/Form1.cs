@@ -27,7 +27,28 @@ namespace Grafika_Zadanie1
 
     private void button1_Click(object sender, EventArgs e)
     {
-      var image = _dartBoard.DartBoardWithBlur(50, 10);
+        int crateLineWidth = 10;
+        int xAxisDistance = 40;
+        int outParse1 = 0;
+        int outParse2 = 0;
+            if (Int32.TryParse(textBox1.Text, out outParse1) && textBox4.Text != String.Empty)
+     {
+         crateLineWidth = Int32.Parse(textBox1.Text);
+     }
+     else
+     {
+         MessageBox.Show("Podaj wartość liczbową całkowitą SZEROKOŚCI", "Błąd");
+     }
+
+     if (Int32.TryParse(textBox2.Text, out outParse2) && textBox4.Text != String.Empty)
+     {
+                xAxisDistance = Int32.Parse(textBox2.Text);
+     }
+     else
+     {
+         MessageBox.Show("Podaj wartość liczbową całkowitą SZEROKOŚCI", "Błąd");
+     }
+            var image = _dartBoard.DartBoardWithBlur(outParse1, outParse2, MyImage);
       panel1.BackgroundImage = image;
     }
 
@@ -128,7 +149,7 @@ namespace Grafika_Zadanie1
         MessageBox.Show("Podaj wartość liczbową całkowitą ROZDZIELCZOŚĆ", "Błąd");
       }
 
-      var image = _cratePatterns.ChessBoardRotate(_color5, _color6, squareSize, resolution);
+      var image = _cratePatterns.ChessBoardRotate(_color5, _color6, squareSize, resolution, MyImage);
       panel1.BackgroundImage = image;
     }
 

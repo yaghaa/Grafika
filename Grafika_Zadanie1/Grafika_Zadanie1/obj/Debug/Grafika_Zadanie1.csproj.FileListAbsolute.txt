@@ -20,3 +20,12 @@ C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe.config
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csprojResolveAssemblyReference.cache
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe.config
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.pdb
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csprojResolveAssemblyReference.cache
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Form1.resources
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Properties.Resources.resources
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
+C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
