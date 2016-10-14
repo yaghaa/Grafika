@@ -11,6 +11,7 @@ namespace Grafika_Zadanie1
     public Bitmap MyImage { get; set; }
     private DartBoard _dartBoard = new DartBoard();
     private CratePatterns _cratePatterns = new CratePatterns();
+    private CirclesPatterns _circlePatterns = new CirclesPatterns();
     private Color _color1 = new Color();
     private Color _color2 = new Color();
     private Color _color3 = new Color();
@@ -268,6 +269,12 @@ namespace Grafika_Zadanie1
             MyImage = new Bitmap(Image.FromFile(fileDialog.FileNames[0]));
             
             panel1.BackgroundImage = MyImage;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            var image = _circlePatterns.Cirlces(MyImage);
+            panel1.BackgroundImage = image;
         }
     }
 } 

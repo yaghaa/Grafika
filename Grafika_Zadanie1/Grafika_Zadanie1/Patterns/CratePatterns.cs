@@ -61,7 +61,6 @@ namespace Grafika_Zadanie1.Patterns
           var leftX = d % xAxisDistance;
           var leftY = g % yAxisDistance;
           if ((leftX > xAxisDistance / 2 + lineSize / 2 || leftX < xAxisDistance / 2 - lineSize / 2) && (leftY > yAxisDistance / 2 + lineSize / 2 || leftY < yAxisDistance / 2 - lineSize / 2))
-
             image.SetPixel(j, i, (bitmap !=null)?bitmap.GetPixel(j,i):bgColor);
           else
             image.SetPixel(j, i, lineColore);

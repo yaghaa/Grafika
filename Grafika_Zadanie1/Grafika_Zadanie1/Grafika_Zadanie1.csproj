@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patterns\CirclesPatterns.cs" />
     <Compile Include="Patterns\CratePatterns.cs" />
     <Compile Include="Patterns\DartBoard.cs" />
     <Compile Include="Program.cs" />
