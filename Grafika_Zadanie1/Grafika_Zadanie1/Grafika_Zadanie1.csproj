@@ -55,6 +55,7 @@
     <Compile Include="Patterns\CirclesPatterns.cs" />
     <Compile Include="Patterns\CratePatterns.cs" />
     <Compile Include="Patterns\DartBoard.cs" />
+    <Compile Include="Patterns\Fourth.cs" />
     <Compile Include="Patterns\WarpPattern.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

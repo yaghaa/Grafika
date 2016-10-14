@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
     public class CirclesPatterns
     {
-        public Image CreateCirlces(Bitmap bitmap)
+        public Image CreateCirlces(Bitmap bitmap = null)
         {
             Bitmap image;
 
