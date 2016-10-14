@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
   public class CratePatterns
   {
-    public Image Crate(Color lineColore, Color bgColor, int lineSize , int xAxisDistance, int yAxisDistance, Bitmap bitmap)
+    public Image CreateCrate(Color lineColore, Color bgColor, int lineSize , int xAxisDistance, int yAxisDistance, Bitmap bitmap)
     {
       Bitmap image;
 

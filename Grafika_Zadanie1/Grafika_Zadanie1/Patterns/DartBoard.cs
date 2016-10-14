@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
   public class DartBoard
   {
-    public Image DartBoardWithBlur(int circleBlurSize, int blurSize, Bitmap bitmap)
+    public Image CreateDartBoardWithBlur(int circleBlurSize, int blurSize, Bitmap bitmap)
     {
       Bitmap image;
 

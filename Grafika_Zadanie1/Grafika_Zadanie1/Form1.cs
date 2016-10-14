@@ -49,7 +49,7 @@ namespace Grafika_Zadanie1
      {
          MessageBox.Show("Podaj wartość liczbową całkowitą SZEROKOŚCI", "Błąd");
      }
-            var image = _dartBoard.DartBoardWithBlur(outParse1, outParse2, MyImage);
+            var image = _dartBoard.CreateDartBoardWithBlur(outParse1, outParse2, MyImage);
       panel1.BackgroundImage = image;
     }
 
@@ -90,7 +90,7 @@ namespace Grafika_Zadanie1
         MessageBox.Show("Podaj wartość liczbową całkowitą ODLEGŁOŚCI Y", "Błąd");
       }
 
-      var image = _cratePatterns.Crate(_color1, _color2, crateLineWidth, xAxisDistance, yAxisDistance,MyImage);
+      var image = _cratePatterns.CreateCrate(_color1, _color2, crateLineWidth, xAxisDistance, yAxisDistance,MyImage);
       panel1.BackgroundImage = image;
     }
 
@@ -273,7 +273,13 @@ namespace Grafika_Zadanie1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            var image = _circlePatterns.Cirlces(MyImage);
+            var image = _circlePatterns.CreateCirlces(MyImage);
+            panel1.BackgroundImage = image;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            var image = _circlePatterns.CreateCirlcesWithShields(MyImage);
             panel1.BackgroundImage = image;
         }
     }
