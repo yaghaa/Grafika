@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
     public class WarpPattern
     {
-        public Image CreateWarpPattern(int circleBlurSize, int blurSize, Bitmap bitmap)
+        public Image CreateWarpPattern(Bitmap bitmap)
         {
             Bitmap image;
 
@@ -19,9 +19,6 @@ namespace Grafika_Zadanie1.Patterns
 
             // Loop variables - indices of the current row and column
             int i, j;
-
-            // Fixed ring width
-            var w = circleBlurSize;
 
             // Get required image resolution from command line arguments
             x_res = 500;
@@ -40,21 +37,64 @@ namespace Grafika_Zadanie1.Patterns
                 for (j = 0; j < x_res; j++)
                 {
                     double d;
-                    int r;
-
                     // Calculate distance to the image center
-                    d = Math.Sqrt((i - y_c)*(i - y_c) + (j - x_c)*(j - x_c));
+                    ///d = Math.Sqrt((i - y_c)*(i - y_c) + (j - x_c)*(j - x_c));
 
-                    // Find the ring index
-                    r = (int) d/w;
+                    if (y_c != i)
+                    {
+                        double a = 0;
+                        double b = 1;
+                        b = x_c - j;
+                        a = y_c - i;
+                    
+                        double tagAlfa = Math.Abs(a)/Math.Abs(b);
+                        var angle = Math.Atan(tagAlfa);
+                        var alfa = angle*(180/Math.PI);
 
-                    // Make decision on the pixel color
-                    // based on the ring index
-                    var left = d%w;
-                    if (r%2 == 0)
-                        image.SetPixel(j, i, Color.Black);
-                    else
-                        image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : Color.White);
+                        if (j < x_c && i<y_c)
+                        {
+                            alfa = 270 + (alfa);
+                        }
+                        else if( j <x_c && i>y_c)
+                        {
+                            alfa = 180 + (90-alfa);
+                        }
+                        else if (j > x_c && i > y_c)
+                        {
+                            alfa = 90 + (alfa);
+                        }
+                        else
+                        {
+                            alfa = 90 - alfa;
+                        }
+
+                        if ((alfa > 10 && alfa <= 30)
+                            || (alfa > 50 && alfa <= 70)
+                            || (alfa > 90 && alfa <= 110)
+                            || (alfa > 130 && alfa <= 150)
+                            || (alfa > 170 && alfa <= 190)
+                            || (alfa > 210 && alfa <= 230)
+                            || (alfa > 250 && alfa <= 270)
+                            || (alfa > 290 && alfa <= 310)
+                            || (alfa > 330 && alfa <= 350)
+                            )
+                            image.SetPixel(j, i, Color.Black);
+                        else
+                        {
+                            if (j == x_c && i>y_c)
+                            {
+                                image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : Color.Black);
+                            }
+                            else
+                            {
+                                image.SetPixel(j, i, bitmap != null ? bitmap.GetPixel(j, i) : Color.White);
+                            }
+
+                        }
+                            
+                    }
+                   
+                   
                 }
 
             // Save the created image in a graphics file

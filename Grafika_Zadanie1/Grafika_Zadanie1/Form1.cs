@@ -12,6 +12,7 @@ namespace Grafika_Zadanie1
     private DartBoard _dartBoard = new DartBoard();
     private CratePatterns _cratePatterns = new CratePatterns();
     private CirclesPatterns _circlePatterns = new CirclesPatterns();
+    private WarpPattern _warpPattern = new WarpPattern();
     private Color _color1 = new Color();
     private Color _color2 = new Color();
     private Color _color3 = new Color();
@@ -280,6 +281,12 @@ namespace Grafika_Zadanie1
         private void button13_Click(object sender, EventArgs e)
         {
             var image = _circlePatterns.CreateCirlcesWithShields(MyImage);
+            panel1.BackgroundImage = image;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            var image = _warpPattern.CreateWarpPattern(MyImage);
             panel1.BackgroundImage = image;
         }
     }
