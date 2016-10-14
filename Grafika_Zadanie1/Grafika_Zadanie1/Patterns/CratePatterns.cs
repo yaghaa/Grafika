@@ -7,7 +7,7 @@ namespace Grafika_Zadanie1.Patterns
 {
   public class CratePatterns
   {
-    public Image Crate(Color lineColore, Color bgColor, int lineSize = 10, int xAxisDistance = 40, int yAxisDistance = 50)
+    public Image Crate(Color lineColore, Color bgColor, int lineSize , int xAxisDistance, int yAxisDistance, Bitmap bitmap)
     {
       Bitmap image;
 
@@ -62,7 +62,7 @@ namespace Grafika_Zadanie1.Patterns
           var leftY = g % yAxisDistance;
           if ((leftX > xAxisDistance / 2 + lineSize / 2 || leftX < xAxisDistance / 2 - lineSize / 2) && (leftY > yAxisDistance / 2 + lineSize / 2 || leftY < yAxisDistance / 2 - lineSize / 2))
 
-            image.SetPixel(j, i, bgColor);
+            image.SetPixel(j, i, (bitmap !=null)?bitmap.GetPixel(j,i):bgColor);
           else
             image.SetPixel(j, i, lineColore);
         }
@@ -91,7 +91,7 @@ namespace Grafika_Zadanie1.Patterns
       return (red << 16) + (green << 8) + blue;
     }
 
-    public Image ChessBoard(Color firstColor, Color secondColor, int sideSize = 20, int resolution = 250000)
+    public Image ChessBoard(Color firstColor, Color secondColor, int sideSize, int resolution, Bitmap myImage)
     {
       Bitmap image;
       bool useFirstColor = true;
@@ -118,10 +118,13 @@ namespace Grafika_Zadanie1.Patterns
             yCount++;
           }
 
-          if (useFirstColor)
-            image.SetPixel(j, i, firstColor);
-          else
-            image.SetPixel(j, i, secondColor);
+            if (useFirstColor)
+                image.SetPixel(j, i, firstColor);
+            else
+            {
+                image.SetPixel(j, i, myImage != null ? myImage.GetPixel(j, i) : secondColor);
+            }
+            
         }
         xCount = 1;
       }
@@ -137,7 +140,7 @@ namespace Grafika_Zadanie1.Patterns
       return image;
     }
 
-    public Image ChessBoardRotate(Color firstColor, Color secondColor, int sideSize = 200, int resolution = 250000)
+    public Image ChessBoardRotate(Color firstColor, Color secondColor, int sideSize, int resolution)
     {
       Bitmap image;
       bool useFirstColor = true;

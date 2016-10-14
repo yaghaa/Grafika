@@ -8,7 +8,7 @@ namespace Grafika_Zadanie1
 {
   public partial class Form1 : Form
   {
-        public Image MyImage;
+    public Bitmap MyImage { get; set; }
     private DartBoard _dartBoard = new DartBoard();
     private CratePatterns _cratePatterns = new CratePatterns();
     private Color _color1 = new Color();
@@ -68,7 +68,7 @@ namespace Grafika_Zadanie1
         MessageBox.Show("Podaj wartość liczbową całkowitą ODLEGŁOŚCI Y", "Błąd");
       }
 
-      var image = _cratePatterns.Crate(_color1, _color2, crateLineWidth, xAxisDistance, yAxisDistance);
+      var image = _cratePatterns.Crate(_color1, _color2, crateLineWidth, xAxisDistance, yAxisDistance,MyImage);
       panel1.BackgroundImage = image;
     }
 
@@ -98,7 +98,7 @@ namespace Grafika_Zadanie1
         MessageBox.Show("Podaj wartość liczbową całkowitą ROZDZIELCZOŚĆ", "Błąd");
       }
 
-      var image = _cratePatterns.ChessBoard(_color3, _color4, squareSize, resolution);
+      var image = _cratePatterns.ChessBoard(_color3, _color4, squareSize, resolution, MyImage);
       panel1.BackgroundImage = image;
     }
 
@@ -244,9 +244,9 @@ namespace Grafika_Zadanie1
         {
             var fileDialog = new OpenFileDialog();
             fileDialog.ShowDialog();
-            MyImage = Image.FromFile(fileDialog.FileNames[0]);
+            MyImage = new Bitmap(Image.FromFile(fileDialog.FileNames[0]));
             
             panel1.BackgroundImage = MyImage;
         }
     }
-}
+} 
