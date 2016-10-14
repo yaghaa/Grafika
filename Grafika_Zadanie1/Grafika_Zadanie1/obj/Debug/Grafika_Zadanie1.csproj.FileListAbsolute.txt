@@ -7,3 +7,20 @@ C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zad
 C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
 C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
 C:\Users\Kopa\Documents\Visual Studio 2015\Projects\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Form1.resources
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe.config
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.pdb
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Form1.resources
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Properties.Resources.resources
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
+C:\Users\a.kondraczyk\Documents\aga\_moje\Grafika-master\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe.config
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.exe
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\bin\Debug\Grafika_Zadanie1.pdb
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csprojResolveAssemblyReference.cache
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Form1.resources
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.Properties.Resources.resources
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache

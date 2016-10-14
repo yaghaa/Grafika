@@ -1,427 +1,252 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Lifetime;
 using System.Windows.Forms;
+using Grafika_Zadanie1.Patterns;
 
 namespace Grafika_Zadanie1
 {
-    public partial class Form1 : Form
+  public partial class Form1 : Form
+  {
+        public Image MyImage;
+    private DartBoard _dartBoard = new DartBoard();
+    private CratePatterns _cratePatterns = new CratePatterns();
+    private Color _color1 = new Color();
+    private Color _color2 = new Color();
+    private Color _color3 = new Color();
+    private Color _color4 = new Color();
+    private Color _color5 = new Color();
+    private Color _color6 = new Color();
+
+    public Form1()
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var demo = new Demo0();
-            var image = demo.Circles(50, 10);
-            panel1.BackgroundImage = image;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var demo = new Demo0();
-            var image = demo.Crate(10, 40,50, Color.Black, Color.Aqua);
-            panel1.BackgroundImage = image;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            var demo = new Demo0();
-            var image = demo.ChessBoard(Color.Black, Color.Aqua, 20,250000);
-
-            panel1.BackgroundImage = image;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var demo = new Demo0();
-            var image = demo.ChessBoardRotate(Color.Black, Color.Aqua, 200, 250000);
-
-            panel1.BackgroundImage = image;
-        }
+      InitializeComponent();
+      _color1 = _color3 = _color5 = Color.Black;
+      _color2 = _color3 = _color5 = Color.Bisque;
     }
 
-    public class Demo0
+    private void button1_Click(object sender, EventArgs e)
     {
-        private bool goingUp = true;
-        
-        public Image Circles(int circleBlurSize, int blurSize)
+      var image = _dartBoard.DartBoardWithBlur(50, 10);
+      panel1.BackgroundImage = image;
+    }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+      var x = 10;
+      int crateLineWidth = 10;
+      int xAxisDistance = 40;
+      int yAxisDistance = 50;
+      int outParse1 = 0;
+      int outParse2 = 0;
+      int outParse3 = 0;
+
+      if (Int32.TryParse(textBox4.Text, out outParse1) && textBox4.Text != String.Empty)
+      {
+        crateLineWidth = Int32.Parse(textBox4.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą SZEROKOŚCI", "Błąd");
+      }
+
+      if (Int32.TryParse(textBox3.Text, out outParse2) && textBox3.Text != String.Empty)
+      {
+        xAxisDistance = Int32.Parse(textBox3.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą ODLEGŁOŚCI X", "Błąd");
+      }
+
+      if (Int32.TryParse(textBox5.Text, out outParse3) && textBox5.Text != String.Empty)
+      {
+        yAxisDistance = Int32.Parse(textBox5.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą ODLEGŁOŚCI Y", "Błąd");
+      }
+
+      var image = _cratePatterns.Crate(_color1, _color2, crateLineWidth, xAxisDistance, yAxisDistance);
+      panel1.BackgroundImage = image;
+    }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+      var x = 10;
+      int squareSize = 20;
+      int resolution = 250000;
+      int outParse1 = 0;
+      int outParse2 = 0;
+
+      if (Int32.TryParse(textBox8.Text, out outParse1) && textBox8.Text != String.Empty)
+      {
+        squareSize = Int32.Parse(textBox8.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą WIELKOŚĆ", "Błąd");
+      }
+
+      if (Int32.TryParse(textBox7.Text, out outParse2) && textBox7.Text != String.Empty)
+      {
+        resolution = Int32.Parse(textBox7.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą ROZDZIELCZOŚĆ", "Błąd");
+      }
+
+      var image = _cratePatterns.ChessBoard(_color3, _color4, squareSize, resolution);
+      panel1.BackgroundImage = image;
+    }
+
+    private void button4_Click(object sender, EventArgs e)
+    {
+      var x = 10;
+      int squareSize = 200;
+      int resolution = 250000;
+      int outParse1 = 0;
+      int outParse2 = 0;
+
+      if (Int32.TryParse(textBox9.Text, out outParse1) && textBox9.Text != String.Empty)
+      {
+        squareSize = Int32.Parse(textBox9.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą WIELKOŚĆ", "Błąd");
+      }
+
+      if (Int32.TryParse(textBox6.Text, out outParse2) && textBox6.Text != String.Empty)
+      {
+        resolution = Int32.Parse(textBox6.Text);
+      }
+      else
+      {
+        MessageBox.Show("Podaj wartość liczbową całkowitą ROZDZIELCZOŚĆ", "Błąd");
+      }
+
+      var image = _cratePatterns.ChessBoardRotate(_color5, _color6, squareSize, resolution);
+      panel1.BackgroundImage = image;
+    }
+
+    private void button6_Click(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button6.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button6.BackColor = MyDialog.Color;
+        _color1 = MyDialog.Color;
+      }
+    }
+
+    private void button7_Click(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button7.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button7.BackColor = MyDialog.Color;
+        _color2 = MyDialog.Color;
+      }
+    }
+
+    private void button9_Click(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button9.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button9.BackColor = MyDialog.Color;
+        _color3 = MyDialog.Color;
+      }
+    }
+
+    private void button8_Click_1(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button8.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button8.BackColor = MyDialog.Color;
+        _color4 = MyDialog.Color;
+      }
+    }
+
+    private void button11_Click(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button11.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button11.BackColor = MyDialog.Color;
+        _color5 = MyDialog.Color;
+      }
+    }
+
+    private void button10_Click(object sender, EventArgs e)
+    {
+      ColorDialog MyDialog = new ColorDialog();
+      // Keeps the user from selecting a custom color.
+      MyDialog.AllowFullOpen = false;
+      // Allows the user to get help. (The default is false.)
+      MyDialog.ShowHelp = true;
+      // Sets the initial color select to the current text color.
+      MyDialog.Color = button10.BackColor;
+
+      // Update the text box color if the user clicks OK
+      if (MyDialog.ShowDialog() == DialogResult.OK)
+      {
+        button10.BackColor = MyDialog.Color;
+        _color6 = MyDialog.Color;
+      }
+    }
+
+        private void button5_Click(object sender, EventArgs e)
         {
-            Bitmap image;
-
-            // Image resolution  
-            int x_res, y_res;
-
-            // Ring center coordinates   
-            int x_c, y_c;
-
-            // Predefined black and white RGB representations   
-            // packed as integers  
-            int black, white;
-
-            // Loop variables - indices of the current row and column  
-            int i, j;
-
-            // Fixed ring width  
-            var w = circleBlurSize;
-
-            // Get required image resolution from command line arguments  
-            x_res = 500;
-            y_res = 500;
-
-            // Initialize an empty image, use pixel format   
-            // with RGB packed in the integer data type  
-            image = new Bitmap(x_res, y_res, PixelFormat.Format32bppRgb);
-
-
-            // Find coordinates of the image center   
-            x_c = x_res/2;
-            y_c = y_res/2;
-
-
-            // Process the image, pixel by pixel  
-            for (i = 0; i < y_res; i++)
-                for (j = 0; j < x_res; j++)
-                {
-                    double d;
-                    int r;
-
-                    // Calculate distance to the image center   
-                    d = Math.Sqrt((i - y_c)*(i - y_c) + (j - x_c)*(j - x_c));
-
-                    // Find the ring index  
-                    r = (int) d/w;
-
-                    // Make decision on the pixel color   
-                    // based on the ring index  
-                    var left = d%w;
-                    if (r%2 == 0)
-                        // Even ring - set black color  i
-                        if (left < blurSize/2)
-                        {
-                            var color = GetGrayShade(blurSize,true, (int)left,circleBlurSize);
-                            image.SetPixel(j, i, color);
-                        }
-                        else if (left > circleBlurSize - blurSize/2)
-                        {
-                            var color = GetGrayShade(blurSize, true, circleBlurSize-(int)left, circleBlurSize);
-                            image.SetPixel(j, i, color);
-                        }
-                        else
-                        {
-                            image.SetPixel(j, i, Color.Black);
-                        }
-
-                    else
-                    // Odd ring - set white color  
-                        if (left < blurSize/2)
-                        {
-                        var color = GetGrayShade(blurSize, false, (int)left, circleBlurSize);
-                        image.SetPixel(j, i, color);
-                        }
-                        else if (left > circleBlurSize - blurSize/2)
-                        {
-                        var color = GetGrayShade(blurSize, false, circleBlurSize-(int)left, circleBlurSize);
-                        image.SetPixel(j, i, color);
-                        }
-                        else
-                        {
-                            image.SetPixel(j, i, Color.White);
-                        }
-                }
-
-            // Save the created image in a graphics file  
-            try
-            {
-                image.Save("circles.bmp", ImageFormat.Bmp);
-            }
-            catch (IOException e)
-            {
-            }
-
-            return image;
-        }
-
-        private Color GetGrayShade(int blurSize, bool up, int left, int circleSize)
-        {
-            int color = 0;
-            if (up)
-            {
-                if (left < circleSize/2)
-                {
-                    var p = 255/blurSize;
-                    var fromZero = blurSize/2 - left;
-                    color = 0 + p*fromZero;
-                }
-                else
-                {
-                    var p = 255 / blurSize;
-                    var fromZero =   circleSize - left - blurSize / 2;
-                    color = 0 + p * fromZero;
-                }
-                
-            }
-            else
-            {
-                if (left < circleSize / 2)
-                {
-                    var p = 255 / blurSize;
-                    var fromZero = blurSize / 2 - left;
-                    color = 255 - p * fromZero;
-                }
-                else
-                {
-                    var p = 255 / blurSize;
-                    var fromZero = circleSize - left - blurSize / 2;
-                    color = 255 - p * fromZero;
-                }
-            }
-            return Color.FromArgb(color,color,color);
-        }
-
-        public Image Crate(int lineSize, int xAxisDistance, int yAxisDistance,Color lineColore, Color bgColor)
-        {
+            var fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            MyImage = Image.FromFile(fileDialog.FileNames[0]);
             
-            Bitmap image;
-            
-            // Image resolution  
-            int x_res, y_res;
-
-            int x_c, y_c;
-
-            // Loop variables - indices of the current row and column  
-            int i, j;
-
-            // Fixed ring width  
-
-
-            // Get required image resolution from command line arguments  
-            x_res = 700;
-            y_res = 700;
-
-            // Initialize an empty image, use pixel format   
-            // with RGB packed in the integer data type  
-            image = new Bitmap(x_res, y_res, PixelFormat.Format32bppRgb);
-
-            // Find coordinates of the image center   
-            x_c = x_res/2;
-            y_c = y_res/2;
-
-
- 
-            for (i = 0; i < y_res; i++)
-                for (j = 0; j < x_res; j++)
-                {
-                    double d;
-                    double g;
-                    int r;
-                    int l;
-
-                    if (j > x_c)
-                    {
-                        d = j - x_c;
-                    }
-                    else
-                    {
-                        d = x_c - j;
-                    }
-                    if (i > y_c)
-                    {
-                        g = i - y_c;
-                    }
-                    else
-                    {
-                        g = y_c - i;
-                    }
-
-                    
-
-                    
-                    var leftX = d% xAxisDistance;
-                    var leftY = g% yAxisDistance;
-                    if ((leftX > xAxisDistance/2 + lineSize/2 || leftX < xAxisDistance/2 - lineSize/2) && (leftY > yAxisDistance/2+lineSize/2 || leftY < yAxisDistance/2-lineSize/2))
-                        image.SetPixel(j, i, bgColor);
-                    else
-                        image.SetPixel(j, i, lineColore);
-                        
-                }
-
-            // Save the created image in a graphics file  
-            try
-            {
-                image.Save("crate.bmp", ImageFormat.Bmp);
-            }
-            catch (IOException e)
-            {
-            }
-            return image;
-        }
-
-        // This method assembles RGB color intensities into single   
-        // packed integer. Arguments must be in <0..255> range  
-        private static int int2RGB(int red, int green, int blue)
-        {
-            // Make sure that color intensities are in 0..255 range   
-            red = red & 0x000000FF;
-            green = green & 0x000000FF;
-            blue = blue & 0x000000FF;
-
-            // Assemble packed RGB using bit shift operations 
-            return (red << 16) + (green << 8) + blue;
-        }
-
-        public Image ChessBoard(Color firstColor, Color secondColor, int sideSize, int resolution)
-        {
-            Bitmap image;
-            bool useFirstColor = true;
-            int yCount = 1;
-            int xCount = 1;
-            
-            var x_res = (int)Math.Sqrt(resolution);
-            var y_res = x_res;
-            image = new Bitmap(x_res, y_res, PixelFormat.Format32bppRgb);
-            
-            for (var i = 0; i < y_res; i++)
-            {
-
-
-                for (var j = 0; j < x_res; j++)
-                {
-                    if (j > xCount*sideSize)
-                    {
-                        useFirstColor = !useFirstColor;
-                        xCount++;
-                    }
-
-                    if (i > yCount*sideSize)
-                    {
-                        useFirstColor = !useFirstColor;
-                        yCount++;
-                    }
-
-                    if (useFirstColor)
-                        image.SetPixel(j, i, firstColor);
-                    else
-                        image.SetPixel(j, i, secondColor);
-
-                }
-                xCount = 1;
-            }
-
-            // Save the created image in a graphics file  
-            try
-            {
-                image.Save("crate.bmp", ImageFormat.Bmp);
-            }
-            catch (IOException e)
-            {
-            }
-            return image;
-
-        }
-
-        public Image ChessBoardRotate(Color firstColor, Color secondColor, int sideSize, int resolution)
-        {
-            Bitmap image;
-            bool useFirstColor = true;
-            int yCount = 1;
-            int xCount = 1;
-
-            var x_res = (int)Math.Sqrt(resolution);
-            var y_res = x_res;
-            image = new Bitmap(x_res, y_res, PixelFormat.Format32bppRgb);
-
-            for (var i = 0; i < y_res; i++)
-            {
-                for (var j = 0; j < x_res; j++)
-                {
-                    if (j > xCount * sideSize)
-                    {
-                        xCount++;
-                    }
-
-                    if (i > yCount * sideSize)
-                    {
-                        yCount++;
-                    }
-                    var x_c = (xCount*sideSize) - sideSize/2;
-                    var y_c = (yCount*sideSize) - sideSize/2;
-                    
-                    if ((j < x_c && i < y_c))
-                         {
-                        var x = ((xCount - 1)*sideSize);
-                        var y = ((yCount - 1) * sideSize);
-                        var distanceFromSquareCenter = Math.Sqrt((i - y_c) * (i - y_c) + (j - x_c) * (j - x_c));
-                        var distanceFormLeftUpperCorner = Math.Sqrt((i - y) * (i - y) + (j - x) * (j - x));
-                        if (distanceFormLeftUpperCorner > distanceFromSquareCenter)
-                        {
-                            image.SetPixel(j, i, firstColor);
-                        }
-                        else
-                            image.SetPixel(j, i, secondColor);
-                    }else if ((j > x_c && i < y_c))
-                    {
-                        var x = ((xCount ) * sideSize);
-                        var y = ((yCount-1 ) * sideSize);
-                        var distanceFromSquareCenter = Math.Sqrt((i - y_c) * (i - y_c) + (j - x_c) * (j - x_c));
-                        var distanceFormRightUpperCorner = Math.Sqrt((i - y) * (i - y) + (j - x) * (j - x));
-                        if (distanceFormRightUpperCorner > distanceFromSquareCenter)
-                        {
-                            image.SetPixel(j, i, firstColor);
-                        }
-                        else
-                            image.SetPixel(j, i, secondColor);
-                    }
-
-                    else if ((j > x_c && i > y_c))
-                    {
-                        var x = ((xCount) * sideSize);
-                        var y = ((yCount) * sideSize);
-                        var distanceFromSquareCenter = Math.Sqrt((i - y_c) * (i - y_c) + (j - x_c) * (j - x_c));
-                        var distanceFormRightLowerCorner = Math.Sqrt((i - y) * (i - y) + (j - x) * (j - x));
-                        if (distanceFormRightLowerCorner > distanceFromSquareCenter)
-                        {
-                            image.SetPixel(j, i, firstColor);
-                        }
-                        else
-                            image.SetPixel(j, i, secondColor);
-                    }
-
-                    else if ((j < x_c && i > y_c))
-                    {
-                        var x = ((xCount-1) * sideSize);
-                        var y = ((yCount) * sideSize);
-                        var distanceFromSquareCenter = Math.Sqrt((i - y_c) * (i - y_c) + (j - x_c) * (j - x_c));
-                        var distanceFormLeftLowerCorner = Math.Sqrt((i - y) * (i - y) + (j - x) * (j - x));
-                        if (distanceFormLeftLowerCorner >  distanceFromSquareCenter)
-                        {
-                            image.SetPixel(j, i, firstColor);
-                        }
-                        else
-                            image.SetPixel(j, i, secondColor);
-                    }
-
-
-
-
-                }
-                xCount = 1;
-            }
-
-            // Save the created image in a graphics file  
-            try
-            {
-                image.Save("crate.bmp", ImageFormat.Bmp);
-            }
-            catch (IOException e)
-            {
-            }
-            return image;
+            panel1.BackgroundImage = MyImage;
         }
     }
 }
