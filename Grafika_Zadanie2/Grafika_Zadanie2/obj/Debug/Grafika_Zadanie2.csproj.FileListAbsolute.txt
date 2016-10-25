@@ -1,5 +1,4 @@
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\bin\Debug\Grafika_Zadanie2.exe.config
-C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.csprojResolveAssemblyReference.cache
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.Form1.resources
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.Properties.Resources.resources
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.csproj.GenerateResource.Cache
@@ -7,3 +6,5 @@ C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\bin\Debug\Grafika
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\bin\Debug\Grafika_Zadanie2.pdb
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.exe
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.pdb
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.csprojResolveAssemblyReference.cache
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.FigurePanel.resources

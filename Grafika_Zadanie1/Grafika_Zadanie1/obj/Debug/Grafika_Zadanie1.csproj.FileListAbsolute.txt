@@ -29,3 +29,5 @@ C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie
 C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.csproj.GenerateResource.Cache
 C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
 C:\Users\cieka\OneDrive\Dokumenty\Agata\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.exe
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie1\Grafika_Zadanie1\obj\Debug\Grafika_Zadanie1.pdb
