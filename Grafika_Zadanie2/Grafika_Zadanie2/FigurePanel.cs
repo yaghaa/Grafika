@@ -43,6 +43,9 @@ namespace Grafika_Zadanie2
             {
                 if(Figure is MyRectangle)
                     Figure.MainForm.SetRectanglePoints((MyRectangle)Figure);
+
+                if (Figure is MyEllipse)
+                    Figure.MainForm.SetEllipsePoints((MyEllipse)Figure);
             }
                 
         }

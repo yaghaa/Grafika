@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Configuration;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Shapes;
 using System.Xml.Serialization;
 using Grafika_Zadanie2.Properties;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace Grafika_Zadanie2
 {
@@ -30,21 +33,18 @@ namespace Grafika_Zadanie2
         }
 
         int mouseStartX, mouseStartY, mouseEndX, mouseEndY;
-
+        int ellipseStartX, ellipseStartY, ellipseFirstX, ellipseFirstY, ellipseSecondX, ellipseSecondY;
+        private int ellipseMouseClickCount = 0;
         public List<Figure> Figures = new List<Figure>();
 
+        //GRADIENT ELLIPSE
         public void PaintComponent(Graphics g)
         {
             LinearGradientBrush gradient = new LinearGradientBrush( new Point(70, 70), new Point(150, 150), Color.Red, Color.Blue);
             g.FillEllipse(gradient,70, 70, 100, 100);
         }
 
-
-        //private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        //{
-        //    PaintComponent(e.Graphics);
-        //}
-
+        //IMPORT IMAGE
         private void bImportImage_Click(object sender, EventArgs e)
         {
             var resolution = (Resolution) cbImageResolution.SelectedItem;
@@ -63,7 +63,79 @@ namespace Grafika_Zadanie2
             }
         }
 
+        public static Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        //MOUSE EVENTS
         private void pbImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (comboBoxShape.SelectedIndex == 0)
+            {
+                RectangleMouseDown(e);
+            }
+            if (comboBoxShape.SelectedIndex == 1)
+            {
+                EllipseMouseDown(e);
+            }
+
+        }
+
+        private void EllipseMouseDown(MouseEventArgs e)
+        {
+            if (ellipseMouseClickCount == 0)
+            {
+                ellipseStartX = e.X;
+                ellipseStartY = e.Y;
+                ellipseMouseClickCount++;
+            }
+            else if (ellipseMouseClickCount == 1)
+            {
+                ellipseFirstX = e.X;
+                ellipseFirstY = e.Y;
+                ellipseMouseClickCount++;
+            }
+            else if (ellipseMouseClickCount == 2)
+            {
+                ellipseSecondX = e.X;
+                ellipseSecondY = e.Y;
+                ellipseMouseClickCount = 0;
+                
+                var myEllipse = new MyEllipse(this)
+                {
+                    CenterPoint = new Point(ellipseStartX, ellipseStartY),
+                    FirstPoint = new Point(ellipseFirstX, ellipseFirstY),
+                    SeckondPoint = new Point(ellipseSecondX, ellipseSecondY),
+                };
+                AddToFigureList(myEllipse);
+                pictureBox1.Refresh();
+            }
+            
+            pictureBox1.Refresh();
+        }
+
+        private void RectangleMouseDown(MouseEventArgs e)
         {
             mouseStartX = e.X;
             mouseStartY = e.Y;
@@ -74,23 +146,31 @@ namespace Grafika_Zadanie2
 
         private void pbImage_MouseUp(object sender, MouseEventArgs e)
         {
-            mouseEndX = e.X;
-            mouseEndY = e.Y;
-            textBoxEnd.Text = "X: " + mouseEndX + " Y: " + mouseEndY;
-            textBoxEnd.Refresh();
-            pictureBox1.Refresh();
-            var myRectangle = new MyRectangle(this)
+            if (comboBoxShape.SelectedIndex == 0)
             {
-                StartPoint = new Point(mouseStartX, mouseStartY),
-                EndPoint = new Point(mouseEndX, mouseEndY),
-            };
-            if(comboBoxShape.SelectedIndex != -1)
-                AddToFigureList(myRectangle);
+                mouseEndX = e.X;
+                mouseEndY = e.Y;
+                textBoxEnd.Text = "X: " + mouseEndX + " Y: " + mouseEndY;
+                textBoxEnd.Refresh();
+                pictureBox1.Refresh();
+
+                if (comboBoxShape.SelectedIndex == 0)
+                {
+                    var myRectangle = new MyRectangle(this)
+                    {
+                        StartPoint = new Point(mouseStartX, mouseStartY),
+                        EndPoint = new Point(mouseEndX, mouseEndY),
+                    };
+                    AddToFigureList(myRectangle);
+                }
+            }
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            if (mouseStartX != default(int) && mouseStartY !=default(int) || comboBoxShape.SelectedIndex != -1)
+            if (mouseStartX != default(int) && mouseStartY !=default(int) 
+                //&& ellipseStartX != default(int) && ellipseStartY != default(int) && ellipseFirstX != default(int) && ellipseFirstY != default(int) && ellipseSecondX != default(int) && ellipseSecondY != default(int)
+                || comboBoxShape.SelectedIndex != -1)
             {
                 // We first cast the "Image" property of the pbImage picture box control
                 // into a Bitmap object.
@@ -100,17 +180,13 @@ namespace Grafika_Zadanie2
 
                 var whitePen = new Pen(Color.White, 1) {DashStyle = DashStyle.Dash};
 
-                // Show the coordinates of the mouse click on the label, label1.
                 if(comboBoxShape.SelectedIndex == 0)
                     DrawRectangle(e,whitePen);
 
-                // Refresh the picture box control in order that
-                // our graphics operation can be rendered.
-                pictureBox1.Refresh();
+                if (comboBoxShape.SelectedIndex == 1)
+                    DrawEllipse(e, whitePen);
 
-                // Calling Dispose() is like calling the destructor of the respective object.
-                // Dispose() clears all resources associated with the object, but the object still remains in memory
-                // until the system garbage-collects it.
+                pictureBox1.Refresh();
                 graphics.Dispose();
             }
         }
@@ -122,6 +198,15 @@ namespace Grafika_Zadanie2
             // Draw the rectangle, starting with the given coordinates, on the picture box.
             e.Graphics.DrawRectangle(p, rect);
         }
+
+        private void DrawEllipse(PaintEventArgs e, Pen p)
+        {
+            var ellipseRect = new Rectangle(ellipseStartX- (ellipseSecondX - ellipseStartX), ellipseSecondY, 2*(ellipseSecondX - ellipseStartX), 2*(ellipseFirstY - ellipseSecondY));
+
+            // Draw the rectangle, starting with the given coordinates, on the picture box.
+            e.Graphics.DrawEllipse(p, ellipseRect);
+        }
+
         private void AddToFigureList(Figure figure)
         { 
             Figures.Add(figure);
@@ -129,6 +214,7 @@ namespace Grafika_Zadanie2
             panelShapes.Refresh();
         }
 
+        //DELETE FIGURE FROM LIST
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (FigurePanel panel in panelShapes.Controls)
@@ -142,6 +228,7 @@ namespace Grafika_Zadanie2
             ReloadPanel();
         }
 
+        //DELETE IMAGE SCRAP
         private void ChangeColor(Figure panelFigure)
         {
             var resolution = (Resolution)cbImageResolution.SelectedItem;
@@ -155,9 +242,10 @@ namespace Grafika_Zadanie2
                         ((Bitmap)pictureBox1.Image).SetPixel(j, i,Color.White);
                 }
             pictureBox1.Refresh();
-
         }
 
+
+        /// TODO ellipse
         private Bitmap CreateHelperImage(Figure panelFigure, Resolution resolution)
         {
             var bmp = new Bitmap(resolution.X, resolution.Y, PixelFormat.Format24bppRgb);
@@ -189,32 +277,22 @@ namespace Grafika_Zadanie2
             mouseEndX = rectangle.EndPoint.X;
             mouseEndY = rectangle.EndPoint.Y;
         }
-      
-        public static Bitmap ResizeImage(Image image, int width, int height)
+
+        public void SetEllipsePoints(MyEllipse ellipse)
         {
-            var destRect = new Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
+            ellipseStartX = ellipse.CenterPoint.X;
+            ellipseStartY = ellipse.CenterPoint.Y;
+            ellipseFirstX = ellipse.FirstPoint.X;
+            ellipseFirstY = ellipse.FirstPoint.Y;
+            ellipseSecondX = ellipse.SeckondPoint.X;
+            ellipseSecondY = ellipse.SeckondPoint.Y;
 
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                using (var wrapMode = new ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-                }
-            }
-
-            return destImage;
         }
+        
     }
+
+
+
 
     public class Resolution
     {
@@ -248,6 +326,21 @@ namespace Grafika_Zadanie2
         public MyRectangle(Form1 form)
         {
             FigureImage = Form1.ResizeImage(Resources.rectangle, 30, 30);
+            MainForm = form;
+        }
+    }
+
+    public class MyEllipse : Figure
+    {
+        public Point CenterPoint { get; set; }
+
+        public Point FirstPoint { get; set; }
+
+        public Point SeckondPoint { get; set; }
+
+        public MyEllipse(Form1 form)
+        {
+            FigureImage = Form1.ResizeImage(Resources.ellipse, 30, 30);
             MainForm = form;
         }
     }
