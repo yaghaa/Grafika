@@ -38,8 +38,11 @@
             this.cbImageResolution = new System.Windows.Forms.ComboBox();
             this.bImportImage = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bUpload = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -137,6 +140,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.bUpload);
+            this.groupBox2.Controls.Add(this.bSave);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 345);
             this.groupBox2.Name = "groupBox2";
@@ -144,6 +149,29 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            // 
+            // bUpload
+            // 
+            this.bUpload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bUpload.Location = new System.Drawing.Point(124, 52);
+            this.bUpload.Name = "bUpload";
+            this.bUpload.Size = new System.Drawing.Size(75, 23);
+            this.bUpload.TabIndex = 11;
+            this.bUpload.Text = "Wczytaj";
+            this.bUpload.UseVisualStyleBackColor = true;
+            this.bUpload.Click += new System.EventHandler(this.bUpload_Click);
+            this.bUpload.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MouseLeaveEvent);
+            // 
+            // bSave
+            // 
+            this.bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSave.Location = new System.Drawing.Point(124, 26);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(75, 23);
+            this.bSave.TabIndex = 10;
+            this.bSave.Text = "Zapisz";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
             // Form1
             // 
@@ -155,9 +183,11 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -174,6 +204,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxShape;
         private System.Windows.Forms.Panel panelShapes;
+        private System.Windows.Forms.Button bUpload;
+        private System.Windows.Forms.Button bSave;
     }
 }
 

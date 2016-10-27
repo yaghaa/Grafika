@@ -41,11 +41,19 @@ namespace Grafika_Zadanie2
 
             if (Checked)
             {
-                if(Figure is MyRectangle)
-                    Figure.MainForm.SetRectanglePoints((MyRectangle)Figure);
+                if (Figure is MyRectangle)
+                    Figure.MainForm.SetRectanglePoints((MyRectangle) Figure);
 
                 if (Figure is MyEllipse)
-                    Figure.MainForm.SetEllipsePoints((MyEllipse)Figure);
+                    Figure.MainForm.SetEllipsePoints((MyEllipse) Figure);
+
+                if (Figure is MyPolygon)
+                    Figure.MainForm.SetPolygonPoints((MyPolygon) Figure);
+            }
+            else
+            {
+                if (Figure is MyPolygon)
+                    Figure.MainForm.PolygonPointsClear();
             }
                 
         }

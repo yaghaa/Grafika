@@ -8,3 +8,5 @@ C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.pdb
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.csprojResolveAssemblyReference.cache
 C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\obj\Debug\Grafika_Zadanie2.FigurePanel.resources
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\bin\Debug\Newtonsoft.Json.dll
+C:\aga\PWR\semestr 5\Grafika\Grafika_Zadanie2\Grafika_Zadanie2\bin\Debug\Newtonsoft.Json.xml
